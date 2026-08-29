@@ -57,7 +57,7 @@ def resume_tailor_node(state: PipelineState) -> dict:
     )
     
     
-    print(f"[Resume Tailor] matched={result['matched_skills']}, lacking={result['lacking_factors']}")
+    
     return {
         "tailored_bullets": result["tailored_bullets"],
         "matched_skills": result["matched_skills"],
@@ -67,7 +67,7 @@ def resume_tailor_node(state: PipelineState) -> dict:
 
 def ats_critic_node(state: PipelineState) -> dict:
    
-    print(f"[DEBUG] tailored_bullets going into ATS Critic: {state['tailored_bullets']}")
+    
     result = evaluate_resume(
         required_skills=state["required_skills"],
         tailored_bullets=state["tailored_bullets"],
@@ -79,7 +79,7 @@ def ats_critic_node(state: PipelineState) -> dict:
     )
     current_retry_count = state.get("retry_count", 0)
     
-    print(f"\n[ATS Critic] Attempt {current_retry_count + 1}: score={result['score']}, passed={result['passed']}")
+   
     return {
         "score": result["score"],
         "passed": result["passed"],
